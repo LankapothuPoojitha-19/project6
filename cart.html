@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        /* Basic CSS for styling */
+        body {
+            background-image: url(bg2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Information</h2>
+        <form id="paymentForm">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
+            <label for="cardExpiry">Expiration Date</label>
+            <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" required>
+            <label for="cardCVC">CVC</label>
+            <input type="text" id="cardCVC" name="cardCVC" placeholder="CVC" required>
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript for handling form submission
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            var formData = new FormData(this);
+            var cardDetails = {
+                number: formData.get('cardNumber'),
+                expiry: formData.get('cardExpiry'),
+                cvc: formData.get('cardCVC'),
+            };
+            var amount = formData.get('amount');
+
+            // Here you would integrate with your payment processing API
+            // For example, you can use Stripe, PayPal, or any other payment gateway
+            // This is just a placeholder to simulate a successful payment
+            simulatePayment(cardDetails, amount);
+        });
+
+        function simulatePayment(cardDetails, amount) {
+            // Placeholder function to simulate payment processing
+            console.log('Processing payment...');
+            console.log('Card Details:', cardDetails);
+            console.log('Amount:', amount);
+            // Here you would make a request to your server to process the payment
+            // and handle the response accordingly
+            alert('Payment successful!');
+        }
+    </script>
+</body>
+</html>
